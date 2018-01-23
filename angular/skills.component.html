@@ -1,0 +1,19 @@
+<article *ngIf="skills">
+  <h1>My Skills</h1>
+  <section *ngFor="let skill of skills">
+    <div class="divider"></div>
+    <div class="section">
+      <h5><a routerLink="/skill/{{ skill.id }}">{{ skill.title }}</a></h5>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    </div>
+  </section>
+</article>
+<div class="fixed-action-btn horizontal">
+  <button class="btn-floating btn-large red waves-effect waves-light" (click)="addSkill($event)" [disabled]="actionInProgress">
+    <i class="large material-icons">add</i>
+  </button>
+</div>
+<div *ngIf="!skills">
+  <h2 *ngIf="!errorMessage">Loading...</h2>
+  <h2 *ngIf="errorMessage" class="badge badge-danger">Loading failed: {{ errorMessage }}</h2>
+</div>
